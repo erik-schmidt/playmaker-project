@@ -3428,10 +3428,10 @@ GameObject:
   - component: {fileID: 2051017283}
   - component: {fileID: 2051017286}
   - component: {fileID: 2051017288}
+  - component: {fileID: 2051017290}
   - component: {fileID: 2051017285}
   - component: {fileID: 2051017289}
   - component: {fileID: 2051017287}
-  - component: {fileID: 2051017290}
   m_Layer: 0
   m_Name: knight
   m_TagString: Player
@@ -3524,7 +3524,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 1
+  m_CollisionDetection: 0
   m_Constraints: 4
 --- !u!114 &2051017286
 MonoBehaviour:
@@ -3550,7 +3550,7 @@ MonoBehaviour:
       position:
         serializedVersion: 2
         x: 50
-        y: 100
+        y: 113
         width: 100
         height: 16
       isBreakpoint: 0
@@ -3560,14 +3560,14 @@ MonoBehaviour:
       actionData:
         actionNames:
         - HutongGames.PlayMaker.Actions.GetAxis
-        - HutongGames.PlayMaker.Actions.TranslatePosition2d
+        - HutongGames.PlayMaker.Actions.SetVelocity2d
         customNames:
         - 
-        - Translate Position 2d
+        - 
         actionEnabled: 0101
         actionIsOpen: 0101
         actionStartIndex: 0000000005000000
-        actionHashCodes: 11839a000cf26a00
+        actionHashCodes: 11839a0068fde304
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -3620,7 +3620,7 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0
+          value: -2.354
         fsmIntParams: []
         fsmBoolParams:
         - useVariable: 0
@@ -3635,18 +3635,18 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: {x: 0, y: 0}
+          value: {x: 0, y: -2.354}
         fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
         stringParams: []
-        byteData: 01000000000101
+        byteData: 010000000001
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 120000000f000000110000000f0000000100000014000000250000000f0000000f000000070000000100000001000000
+        paramDataType: 120000000f000000110000000f0000000100000014000000250000000f0000000f0000000700000001000000
         paramName:
         - axisName
         - multiplier
@@ -3658,14 +3658,13 @@ MonoBehaviour:
         - x
         - y
         - space
-        - perSecond
         - everyFrame
-        paramDataPos: 000000000000000000000000010000000000000000000000000000000200000003000000010000000500000006000000
-        paramByteDataSize: 000000000000000000000000000000000100000000000000000000000000000000000000040000000100000001000000
+        paramDataPos: 0000000000000000000000000100000000000000000000000000000002000000030000000100000005000000
+        paramByteDataSize: 0000000000000000000000000000000001000000000000000000000000000000000000000400000001000000
     events:
     - name: Jump
       isSystemEvent: 0
-      isGlobal: 0
+      isGlobal: 1
     - name: FINISHED
       isSystemEvent: 1
       isGlobal: 0
@@ -3673,13 +3672,7 @@ MonoBehaviour:
     variables:
       floatVariables: []
       intVariables: []
-      boolVariables:
-      - useVariable: 1
-        name: Jumped
-        tooltip: 
-        showInInspector: 0
-        networkSync: 0
-        value: 0
+      boolVariables: []
       stringVariables: []
       vector2Variables: []
       vector3Variables: []
@@ -3694,7 +3687,7 @@ MonoBehaviour:
       enumVariables: []
       categories:
       - 
-      variableCategoryIDs: 00000000
+      variableCategoryIDs: 
     description: 
     docUrl: 
     showStateLabel: 0
@@ -4340,7 +4333,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051017282}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: d23af5ea86f537a40a3a56989a4a3113, type: 2}
   m_CullingMode: 0
@@ -4367,15 +4360,15 @@ MonoBehaviour:
     dataVersion: 2
     usedInTemplate: {fileID: 0}
     name: Jump
-    startState: Jump Input
+    startState: State 1
     states:
-    - name: Jump Input
+    - name: State 1
       description: 
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 50
-        y: 100
+        x: 53
+        y: 113
         width: 100
         height: 32
       isBreakpoint: 0
@@ -4385,7 +4378,7 @@ MonoBehaviour:
       - fsmEvent:
           name: Jump
           isSystemEvent: 0
-          isGlobal: 0
+          isGlobal: 1
         toState: Jump
         linkStyle: 0
         linkConstraint: 0
@@ -4393,7 +4386,7 @@ MonoBehaviour:
         colorIndex: 0
       actionData:
         actionNames:
-        - HutongGames.PlayMaker.Actions.GetButtonUp
+        - HutongGames.PlayMaker.Actions.GetButtonDown
         customNames:
         - 
         actionEnabled: 01
@@ -4453,34 +4446,32 @@ MonoBehaviour:
       colorIndex: 0
       position:
         serializedVersion: 2
-        x: 340
-        y: 83
+        x: 325
+        y: 119
         width: 100
         height: 32
       isBreakpoint: 0
-      isSequence: 0
+      isSequence: 1
       hideUnused: 0
       transitions:
       - fsmEvent:
           name: FINISHED
           isSystemEvent: 1
           isGlobal: 0
-        toState: Jump Input
+        toState: State 1
         linkStyle: 0
         linkConstraint: 0
         linkTarget: 0
         colorIndex: 0
       actionData:
         actionNames:
-        - HutongGames.PlayMaker.Actions.AddForce2d
-        - HutongGames.PlayMaker.Actions.Wait
+        - HutongGames.PlayMaker.Actions.SetVelocity2d
         customNames:
         - 
-        - 
-        actionEnabled: 0100
-        actionIsOpen: 0101
-        actionStartIndex: 0000000008000000
-        actionHashCodes: d596ab0248c01101
+        actionEnabled: 01
+        actionIsOpen: 01
+        actionStartIndex: 00000000
+        actionHashCodes: 68fde304
         unityObjectParams: []
         fsmGameObjectParams: []
         fsmOwnerDefaultParams:
@@ -4509,19 +4500,13 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 0
+          value: -5.959
         - useVariable: 0
           name: 
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: 3
-        - useVariable: 0
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: 0.1
+          value: 5
         fsmIntParams: []
         fsmBoolParams: []
         fsmVector2Params:
@@ -4530,49 +4515,31 @@ MonoBehaviour:
           tooltip: 
           showInInspector: 0
           networkSync: 0
-          value: {x: 0, y: 0}
-        - useVariable: 1
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: {x: 0, y: 0}
-        fsmVector3Params:
-        - useVariable: 1
-          name: 
-          tooltip: 
-          showInInspector: 0
-          networkSync: 0
-          value: {x: 0, y: 0, z: 0}
+          value: {x: -5.959, y: 5}
+        fsmVector3Params: []
         fsmColorParams: []
         fsmRectParams: []
         fsmQuaternionParams: []
-        stringParams:
-        - 
-        byteData: 010000000000
+        stringParams: []
+        byteData: 0000000000
         arrayParamSizes: 
         arrayParamTypes: []
         customTypeSizes: 
         customTypeNames: []
-        paramDataType: 140000000700000025000000250000000f0000000f0000001c000000010000000f0000001700000001000000
+        paramDataType: 14000000250000000f0000000f0000000700000001000000
         paramName:
         - gameObject
-        - forceMode
-        - atPosition
         - vector
         - x
         - y
-        - vector3
+        - space
         - everyFrame
-        - time
-        - finishEvent
-        - realTime
-        paramDataPos: 0000000000000000000000000100000000000000010000000000000004000000020000000000000005000000
-        paramByteDataSize: 0000000004000000000000000000000000000000000000000000000001000000000000000000000001000000
+        paramDataPos: 000000000000000000000000010000000000000004000000
+        paramByteDataSize: 000000000000000000000000000000000400000001000000
     events:
     - name: Jump
       isSystemEvent: 0
-      isGlobal: 0
+      isGlobal: 1
     - name: FINISHED
       isSystemEvent: 1
       isGlobal: 0
