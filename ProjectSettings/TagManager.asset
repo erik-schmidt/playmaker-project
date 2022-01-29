@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - PlayerAttack
   - EnemyAttack
+  - Collectable
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -18,7 +20,7 @@ TagManager:
   - Player
   - Dead Enemy
   - Dead Player
-  - 
+  - Spikes
   - 
   - 
   - 
